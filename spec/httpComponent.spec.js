@@ -1,8 +1,8 @@
-describe('component.js', function () {
+describe('Http Component', function () {
 
     var Q = require('q');
     var nock = require('nock');
-    var component = require('../lib/component.js');
+    var HttpComponent = require('../lib/httpComponent.js').HttpComponent;
     var messages = require('../lib/messages.js');
 
     it('should work', function () {
@@ -26,9 +26,12 @@ describe('component.js', function () {
             return Q(messages.newMessageWithBody(response.body));
         }
 
+        var component = new HttpComponent(emitter)
+            .onResponse(handleResponse);
+
         runAndExpect(
             function () {
-                component.simpleHttpRequestComponent.bind(emitter)('get', options, handleResponse);
+                component.exec('get', options);
             },
             function () {
                 return emitter.emit.callCount === 2;
