@@ -27,7 +27,7 @@ describe('Http Component', function () {
         }
 
         var component = new HttpComponent(emitter)
-            .onResponse(handleResponse);
+            .success(handleResponse);
 
         runAndExpect(
             function () {
