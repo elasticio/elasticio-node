@@ -14,10 +14,10 @@ function doProcess(msg, cfg) {
         json: true
     };
     
-    function handleResponse(response, body) {
+    function onSuccess(response, body) {
         return messages.newMessageWithBody(body);
     }
     
-    new HttpComponent(this).success(handleResponse).get(options); 
+    new HttpComponent(this).success(onSuccess).get(options); 
 }
 ````
