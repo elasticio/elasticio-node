@@ -1,9 +1,9 @@
 # The most simple HttpComponent example
 
 ````js
-var api = require('elasticio-node-api');
-var HttpComponent = api.HttpComponent;
-var messages = api.messages;
+var elasticio = require('elasticio-node');
+var HttpComponent = elasticio.HttpComponent;
+var messages = elasticio.messages;
 
 exports.process = doProcess;
 
@@ -21,9 +21,9 @@ function doProcess(msg, cfg) {
 # Overriding the success handler
 
 ````js
-var api = require('elasticio-node-api');
-var HttpComponent = api.HttpComponent;
-var messages = api.messages;
+var elasticio = require('elasticio-node');
+var HttpComponent = elasticio.HttpComponent;
+var messages = elasticio.messages;
 
 exports.process = doProcess;
 
