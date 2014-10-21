@@ -1,7 +1,7 @@
 {
     "name": "elasticio-node",
     "description": "Node.js API for the elastic.io integration platform",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": {
         "name": "elastic.io GmbH",
         "email": "info@elastic.io"
@@ -13,6 +13,7 @@
         "webservice",
         "http"
     ],
+    "main": "./elasticio.js",
     "repository": {
         "type": "git",
         "url": "git://github.com/elasticio/nodejs-api"
