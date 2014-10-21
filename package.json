@@ -1,5 +1,5 @@
 {
-    "name": "elasticio",
+    "name": "elasticio-node",
     "description": "Node.js API for the elastic.io integration platform",
     "version": "0.0.1",
     "author": {
