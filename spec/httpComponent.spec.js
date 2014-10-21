@@ -21,12 +21,7 @@ describe('Http Component', function () {
             json: true
         };
 
-        function handleResponse(response, body) {
-            return messages.newMessageWithBody(body);
-        }
-
-        var component = new HttpComponent(emitter)
-            .success(handleResponse);
+        var component = new HttpComponent(emitter);
 
         runAndExpect(
             function () {
@@ -67,12 +62,7 @@ describe('Http Component', function () {
             json: true
         };
 
-        function handleResponse(response, body) {
-            return messages.newMessageWithBody(body);
-        }
-
-        var component = new HttpComponent(emitter)
-            .success(handleResponse);
+        var component = new HttpComponent(emitter);
 
         runAndExpect(
             function () {
@@ -113,12 +103,7 @@ describe('Http Component', function () {
             json: true
         };
 
-        function handleResponse(response, body) {
-            return messages.newMessageWithBody(body);
-        }
-
-        var component = new HttpComponent(emitter)
-            .success(handleResponse);
+        var component = new HttpComponent(emitter);
 
         runAndExpect(
             function () {
@@ -137,6 +122,41 @@ describe('Http Component', function () {
                     foo: 'bar',
                     baz: 'barney'
                 });
+
+                expect(emitCalls[1].args).toEqual(['end']);
+            });
+    });
+
+    it('404', function () {
+
+        nock('http://foobarbazbarney.com')
+            .put('/api')
+            .reply(404, "Ouch");
+
+
+        var emitter = jasmine.createSpyObj('emitter', ['emit']);
+
+        var options = {
+            url: 'http://foobarbazbarney.com/api',
+            json: true
+        };
+
+        var component = new HttpComponent(emitter);
+
+        runAndExpect(
+            function () {
+                component.put(options);
+            },
+            function () {
+                return emitter.emit.callCount === 2;
+            },
+            function () {
+                var emitCalls = emitter.emit.calls;
+
+                var emitDataArgs = emitCalls[0].args;
+
+                expect(emitDataArgs[0]).toEqual('error');
+                expect(emitDataArgs[1]).toEqual(new Error("Ouch"));
 
                 expect(emitCalls[1].args).toEqual(['end']);
             });
