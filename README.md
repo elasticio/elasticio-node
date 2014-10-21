@@ -7,7 +7,7 @@ var messages = api.messages;
 
 exports.process = doProcess;
 
-function doProces(msg, cfg) {
+function doProcess(msg, cfg) {
 
     var options = {
         url: 'http://foobarbazbarney.com/api',
