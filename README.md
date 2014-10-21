@@ -38,7 +38,7 @@ function doProcess(msg, cfg) {
     
     function onSuccess(response, body) {
         
-        if (response.statusCode !== 201) {
+        if (response.statusCode === 400) {
             throw new Error(JSON.stringify(body));
         }
         
