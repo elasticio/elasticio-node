@@ -1,8 +1,9 @@
 describe('Http Component', function () {
 
     var nock = require('nock');
-    var HttpComponent = require('../lib/httpComponent.js').HttpComponent;
-    var messages = require('../lib/messages.js');
+    var elasticio = require('../elasticio.js');
+    var HttpComponent = elasticio.HttpComponent;
+    var messages = elasticio.messages;
 
     it('GET', function () {
 
