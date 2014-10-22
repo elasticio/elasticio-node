@@ -23,6 +23,35 @@ function doProcess(msg, cfg) {
 
 Please note that ``HttpComponent.get`` sends a HTTP GET request. The response is checked to have a status codes ``200 OK`` or ``201 Created``. If so, the response's body will be be used as component's output. Any other status code will result in an error being thrown.
 
+# Supported HTTP verbs
+
+The ``HttpComponent`` class exposes function for each of the supported HTTP verbs. Currently following are supported:
+
+* ``HttpComponent.get``: sends HTTP GET
+* ``HttpComponent.post``: sends HTTP POST
+* ``HttpComponent.put``: sends HTTP PUT
+
+Here is an example of how to send a HTTP POST request:
+
+````js
+var HttpComponent = require('elasticio-node').HttpComponent;
+
+// exporting the process function to be called by elastic.io runtime
+exports.process = doProcess;
+
+function doProcess(msg, cfg) {
+
+    // creating requestion options
+    var options = {
+        url: 'http://foobarbazbarney.com/api',
+        body : JSON.stringify({message : "Hello, world!"})
+    };
+    
+    // sending GET request with given options
+    new HttpComponent(this).post(options); 
+}
+````
+
 # Overriding the success handler
 
 ````js
