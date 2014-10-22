@@ -65,20 +65,30 @@ function doProcess(msg, cfg) {
 
     var self = this;
 
+    // creating requestion options
     var options = {
         url: 'http://foobarbazbarney.com/api',
         json: true
     };
     
+    // overrides the default response handler
     function onSuccess(response, body) {
         
         if (response.statusCode === 400) {
             throw new Error(JSON.stringify(body));
         }
         
-        return messages.newMessageWithBody(body);
+        // you may also modify the data before emitting them
+        delete body.internalId;
+        
+        // creating a message from given response body
+        var data = messages.newMessageWithBody(body);
+        
+        // emitting the "data" event
+        self.emit('data', data);
     }
     
+    // sending GET request with given options
     new HttpComponent(this).success(onSuccess).get(options); 
 }
 ````
