@@ -52,6 +52,21 @@ function doProcess(msg, cfg) {
 }
 ````
 
+# Headers
+
+HTTP Headers for the request can be set in the options object:
+
+    // creating requestion options
+    var options = {
+        url: 'http://foobarbazbarney.com/api',
+        json : {message : "Hello, world!"},
+        headers: {
+            'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==',
+            'Accept-Charset': 'utf-8',
+            'User-Agent': 'Mozilla/5.0'
+        }
+    };
+
 # Overriding the success handler
 
 ````js
