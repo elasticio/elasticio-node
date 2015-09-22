@@ -1,2 +1,6 @@
-exports.HttpComponent = require("./lib/httpComponent.js").HttpComponent;
-exports.messages = require("./lib/messages.js");
+exports.HttpComponent = require("./lib/httpComponent").HttpComponent;
+exports.messages = require("./lib/messages");
+exports.crypt = require("./lib/crypt");
+exports.formats = require("./lib/formats");
+exports.HeartBeatStream = require("./lib/heartbeat-stream");
+exports.ObjectUtilities = require("./lib/ObjectUtilities");
