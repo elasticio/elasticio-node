@@ -1,7 +1,7 @@
 {
     "name": "elasticio-node",
     "description": "Node.js API for the elastic.io integration platform",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "author": {
         "name": "elastic.io GmbH",
         "email": "info@elastic.io"
